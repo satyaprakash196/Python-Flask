@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Clone  Repository') {
             steps {
-                git 'https://github.com/your-username/your-repo.git'
+                git 'https://github.com/satyaprakash196/Python-Flask.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('myapp-image')
+                    docker.build('flask-ci-cd-app')
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    docker.image('myapp-image').run('-p 5000:5000')
+                     docker.image('flask-ci-cd-app').run('-p 5000:5000')
                 }
             }
         }
